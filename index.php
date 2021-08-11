@@ -1,9 +1,29 @@
 <?php
-// print_r ($_POST);
-if(isset($_POST['name'])) {
-    $nameFilter = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
-    echo "Мое имя ".$nameFilter;
+function sum($a, $b) {
+    $result = false;
+    if(!is_numeric($a)) {
+        $result = "Ошибкаю. Значение 'а' не является числом";
+    }else if (!is_numeric($b)) {
+        $result = "Ошибкаю. Значение 'b' не является числом";
+    } else {
+        $result = $a + $b;
+    }
+    return $result;
 }
+
+function maxSum($sum, ) {
+    $result = false;
+    if($sum<30) {
+        $result = "Сумма больше 30";
+    } else {
+        $result = "Сумма меньше 30";
+    }
+
+    return $result;
+
+}
+
+echo sum(3, 2);
 
 ?>
 
@@ -17,12 +37,7 @@ if(isset($_POST['name'])) {
 </head>
 <body>
 
-    <form action="/" method="post">
-        <input type="text" name="name" placeholder="ваше имя">
-        <textarea name="comment"></textarea>
-        <input type="hidden" name="id_user" value="1313">
-        <input type="submit" value="отправить">
-    </form>
+  
     
 </body>
 </html>
