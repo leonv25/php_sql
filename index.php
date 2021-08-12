@@ -1,43 +1,24 @@
 <?php
-function sum($a, $b) {
-    $result = false;
-    if(!is_numeric($a)) {
-        $result = "Ошибкаю. Значение 'а' не является числом";
-    }else if (!is_numeric($b)) {
-        $result = "Ошибкаю. Значение 'b' не является числом";
-    } else {
-        $result = $a + $b;
-    }
-    return $result;
+
+$mysqli = new mysqli("localhost", "root", "", "kinomonster");
+if(mysqli_connect_errno()) {
+    printf ("Соединение не установлено 25", mysqli_connect_error());
+    exit();
 }
 
-function maxSum($sum, ) {
-    $result = false;
-    if($sum<30) {
-        $result = "Сумма больше 30";
-    } else {
-        $result = "Сумма меньше 30";
-    }
 
-    return $result;
+$mysqli->set_charset("utf8");
 
+
+
+$query = $mysqli->query("SELECT * FROM movie");
+while ($row = mysqli_fetch_assoc($query)) {
+    echo $row['name'];
 }
 
-echo sum(3, 2);
+$mysqli->close();
+
+
+
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-  
-    
-</body>
-</html>
