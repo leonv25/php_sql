@@ -22,3 +22,4 @@ $query = "DELETE FROM movie WHERE id= 3";
 
 $mysqli->close();
 ?>
+5
