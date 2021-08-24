@@ -1,25 +1,33 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "kinomonster");
-if(mysqli_connect_errno()) {
-    printf ("Соединение не установлено", mysqli_connect_error());
-    exit();
-}
-$mysqli->set_charset('utf8');
 
-// $query = $mysqli->query("SELECT name, year FROM movie");
-// while ($row = mysqli_fetch_assoc($query)) {
-//     echo $row['name'].$row['year']."<br>";
-// }
+    function insert($name, $desc, $year, $rating, $poster, $add_date, $category_id) {
+        $mysqli = new mysqli("localhost", "root", "", "kinomonster");
+        if(mysqli_connect_errno()) {
+            printf ("Соединение не установлено", mysqli_connect_error());
+            exit();
+        };
 
-// $query = "INSERT INTO movie VALUES(null, 'Безумный Макс', 'Описание фильма безумный Макс', '2015', Now() )";
-// $mysqli->query($query);
+        $mysqli->set_charset('utf8');
 
-// $query = "UPDATE movie SET year = 1990 WHERE id = 3";
-// $mysqli->query($query);
+        $query = "INSERT INTO movi VALUES(null, '$name', '$desc', '$year', '$rating', '$poster', Now(), '$category_id')";
+        $result = false;
+        if($mysqli->query($query)) {
+            $result = true;
+        }
+        return $result;
+    }
+    
+    $xml = simplexml_load_file("xml/movies.xml") or die("Error: Cannot create object");
+    echo count($xml).'<br>';
 
-$query = "DELETE FROM movie WHERE id= 3";
+    foreach ($xml as $movie_key => $movie) {
+        echo $movie -> title_russian.'<br>';
+    }
 
 
-$mysqli->close();
+
+    echo "<pre>";
+    print_r($xml);
+    echo "</pre>";
+
 ?>
-5
