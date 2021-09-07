@@ -11,7 +11,7 @@
         $queryNew = "INSERT INTO music VALUES(null,'".$name."','".$author."')";
         $mysqli->query($queryNew);
     }
-    $query = $mysqli->query("SELECT name, author FROM music");
+    // $query = $mysqli->query("SELECT name, author FROM music");
     $mysqli->close();
 
 
